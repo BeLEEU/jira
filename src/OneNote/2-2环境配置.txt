@@ -1,0 +1,5 @@
+1.引入路径过长
+"baseUrl": "./src", 将默认的绝对路径改为src
+2.代码不够格式化 -》 使用Prettier `npm install --dev --exact prettier`
+
+3. npx mrm lint-staged 将格式化配置到githook里
