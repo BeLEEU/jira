@@ -1,11 +1,26 @@
+import { string } from 'prop-types'
 import React from 'react'
 import {useState} from 'react'
 
-export const SearchPanel = ({param, setParam, users}) => {
-  
-  
-  
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  title: string;
+  organazition: string;
+}
 
+interface SearchPanelProps {
+  users: User[],
+  param: {
+    name: string;
+    personId: string;
+  },
+  setParam: (param: SearchPanelProps['param']) => void;
+}
+
+export const SearchPanel = ({param, setParam, users}: SearchPanelProps) => {
+  
   return (<form>
     <div>
       <input type="text" value={param.name} onChange={evt => setParam({
