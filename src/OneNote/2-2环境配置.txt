@@ -3,3 +3,11 @@
 2.代码不够格式化 -》 使用Prettier `npm install --dev --exact prettier`
 
 3. npx mrm lint-staged 将格式化配置到githook里
+
+# 2-3
+1.安装mock
+npm install json-server -D 安装本地mock服务器
+2.创建文件夹
+在根目录创建 __json_server_mock__ 文件夹内创建db.json
+3.创建脚本
+
