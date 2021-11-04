@@ -1,20 +1,12 @@
 import { useAuth } from "context/auth-context";
-import React, { FormEvent } from "react";
-import {Form, Button, Input} from 'antd'
+import React from "react";
+import {Form, Input} from 'antd'
 import {LongButton} from './index'
-
-interface Base{
-  id: number
-}
-
-interface Person extends Base {
-  name: string
-}
 
 
 export const LoginScreen = () => {
   
-  const {login, user} = useAuth()
+  const {login} = useAuth()
 
   const handleSubmit = (values: {username: string, password: string}) => {
     login(values);

@@ -1,7 +1,5 @@
-import { Input, Select } from 'antd'
-import { string } from 'prop-types'
+import { Input, Select, Form} from 'antd'
 import React from 'react'
-import {useState} from 'react'
 
 export interface User {
   id: string;
@@ -23,12 +21,18 @@ interface SearchPanelProps {
 
 export const SearchPanel = ({param, setParam, users}: SearchPanelProps) => {
   
-  return (<form>
-    <div>
-      <Input type="text" value={param.name} onChange={evt => setParam({
-        ...param,
-        name: evt.target.value
+  return (<Form style={{marginBottom: '2rem'}} layout={"inline"}>
+    <Form.Item>
+      <Input 
+        placeholder={'项目名'}
+        type="text" 
+        value={param.name}         
+        onChange={evt => setParam({
+          ...param,
+          name: evt.target.value
       })}/>
+    </Form.Item>
+    <Form.Item>
       <Select value={param.personId} onChange={value => setParam({
         ...param,
         personId: value
@@ -38,6 +42,6 @@ export const SearchPanel = ({param, setParam, users}: SearchPanelProps) => {
           users.map(user => <Select.Option  key={user.id} value={user.id}>{user.name}</Select.Option>)
         }
       </Select>
-    </div>
-  </form>)
+    </Form.Item>
+  </Form>)
 }

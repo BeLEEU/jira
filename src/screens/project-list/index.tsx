@@ -2,11 +2,9 @@ import React from 'react'
 import { List } from "./list"
 import { SearchPanel } from "./search-panel"
 import {useState, useEffect} from 'react'
-import * as qs from 'qs'
 import { cleanObject, useDebounce } from 'utils'
 import { useHttp } from 'utils/http'
-
-const apiUrl = process.env.REACT_APP_API_URL
+import styled from '@emotion/styled'
 
 export const ProjectListScreen = () => {
   const [param, setParam] = useState({
@@ -19,14 +17,21 @@ export const ProjectListScreen = () => {
   const client = useHttp()
   useEffect(() =>{
     client('projects', {data:cleanObject(debouncedParam)}).then(setList)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedParam])
 
   useEffect(() =>{
     client('users').then(setUsers)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return <div>
+  return <Container>
+    <h1>项目列表</h1>
     <SearchPanel param={param} setParam={setParam} users={users}/>
     <List list={list} users={users}/>
-  </div>
+  </Container>
 }
+
+const Container = styled.div`
+  padding: 3.2rem
+`
